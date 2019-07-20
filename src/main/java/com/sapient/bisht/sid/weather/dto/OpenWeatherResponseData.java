@@ -1,4 +1,4 @@
-package com.sapient.bisht.sid.weather.dto.openapi;
+package com.sapient.bisht.sid.weather.dto;
 
 import java.util.List;
 
@@ -53,4 +53,43 @@ public class OpenWeatherResponseData {
 	public void setList(List<DataPoint> list) {
 		this.list = list;
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OpenWeatherResponseData other = (OpenWeatherResponseData) obj;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (cnt == null) {
+			if (other.cnt != null)
+				return false;
+		} else if (!cnt.equals(other.cnt))
+			return false;
+		if (cod == null) {
+			if (other.cod != null)
+				return false;
+		} else if (!cod.equals(other.cod))
+			return false;
+		if (list == null) {
+			if (other.list != null)
+				return false;
+		} else if (!list.equals(other.list))
+			return false;
+		if (message == null) {
+			if (other.message != null)
+				return false;
+		} else if (!message.equals(other.message))
+			return false;
+		return true;
+	}
+	
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.bisht.sid.weather.dto.openapi.OpenWeatherResponseData;
+import com.sapient.bisht.sid.weather.dto.OpenWeatherResponseData;
 import com.sapient.bisht.sid.weather.service.OpenWeatherSerivce;
 
 @RestController

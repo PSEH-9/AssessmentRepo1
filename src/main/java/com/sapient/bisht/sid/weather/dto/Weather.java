@@ -1,4 +1,4 @@
-package com.sapient.bisht.sid.weather.dto.openapi;
+package com.sapient.bisht.sid.weather.dto;
 
 import lombok.Data;
 

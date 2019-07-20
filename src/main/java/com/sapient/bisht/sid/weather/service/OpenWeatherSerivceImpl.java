@@ -26,12 +26,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sapient.bisht.sid.weather.dto.openapi.DataPoint;
-import com.sapient.bisht.sid.weather.dto.openapi.OpenWeatherResponseData;
-import com.sapient.bisht.sid.weather.dto.openapi.Rain;
-import com.sapient.bisht.sid.weather.dto.openapi.Temp;
-import com.sapient.bisht.sid.weather.dto.openapi.Weather;
-import com.sapient.bisht.sid.weather.dto.openapi.Wind;
+import com.sapient.bisht.sid.weather.dto.DataPoint;
+import com.sapient.bisht.sid.weather.dto.OpenWeatherResponseData;
+import com.sapient.bisht.sid.weather.dto.Rain;
+import com.sapient.bisht.sid.weather.dto.Temp;
+import com.sapient.bisht.sid.weather.dto.Weather;
+import com.sapient.bisht.sid.weather.dto.Wind;
 
 @Component
 @Slf4j

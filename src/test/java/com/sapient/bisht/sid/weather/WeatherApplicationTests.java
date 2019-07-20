@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sapient.bisht.sid.weather.dto.WeatherAPIResponse;
+import com.sapient.bisht.sid.weather.dto.OpenWeatherResponseData;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -27,7 +27,7 @@ public class WeatherApplicationTests {
 	TestRestTemplate restTemplate;
 
 	public static final String PATH = "/api/forcast/get?";
-	private WeatherAPIResponse response ;
+	private OpenWeatherResponseData response ;
 	ObjectMapper om = new ObjectMapper();
 
 	private URI getURL(String city, String country) {
@@ -49,7 +49,7 @@ public class WeatherApplicationTests {
 			response = om.readValue(
 					this.getClass().getClassLoader()
 							.getResourceAsStream(filename),
-							WeatherAPIResponse.class);
+							OpenWeatherResponseData.class);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,11 +57,19 @@ public class WeatherApplicationTests {
 
 	@Test
 	public void checkRainMessage() {
-		ResponseEntity<WeatherAPIResponse> responseActual = restTemplate
+		readFile("bangalore.json");
+		ResponseEntity<OpenWeatherResponseData> responseActual = restTemplate
 				.getForEntity(getURL("Bangalore", "in"),
-						WeatherAPIResponse.class);
+						OpenWeatherResponseData.class);
 		Assert.assertEquals(HttpStatus.OK, responseActual.getStatusCode());
-		System.out.println(responseActual.getBody());
 		Assert.assertEquals(response, responseActual.getBody());
+	}
+
+	@Test
+	public void checkZException() {
+		ResponseEntity<OpenWeatherResponseData> responseActual = restTemplate
+				.getForEntity(getURL("invalid", "in"),
+						OpenWeatherResponseData.class);
+		Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseActual.getStatusCode());
 	}
 }
