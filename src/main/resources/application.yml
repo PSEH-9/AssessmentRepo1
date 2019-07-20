@@ -1,0 +1,26 @@
+server:
+  http:
+    port: 8080
+  servlet:
+    context-path: /weather-service
+logging:
+  level:
+    root: INFO
+    com: 
+      sapient: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,*
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+weather:
+  api:
+    url: https://api.openweathermap.org/data/2.5/forecast?q=@@PARAM@@&units=metric
+    appid: 28440b363c8c150a9ff7e84133c991a2
+    
